@@ -1,6 +1,6 @@
 
 
-function passwordGen() {
+function password () {
   
   
   let passwordLength = prompt("How many characters would you like in your password? Enter a value between 8-128", 8);
