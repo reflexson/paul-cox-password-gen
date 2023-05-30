@@ -98,18 +98,9 @@ function passwordGen() {
   
 }
 
-// Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
-
-// }
-
-
-// document.getElementById("password").innerHTML =
-// "Your password will be " + characters + " characters long!";
-
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+function copyPassword() {
+  var copyText = document.getElementById("password");
+  copyText.select();
+  document.execCommand("copy");  
+}
