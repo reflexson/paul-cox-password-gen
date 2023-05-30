@@ -17,7 +17,7 @@ function passwordGen() {
     numbers = prompt("Would you like numbers in you password? \"y\" for Yes \"n\" for No", "y").toLowerCase();
   } 
   if (numbers=="y"){
-    alert("Numbers be all up in this password");
+    alert("Numbers are all up in this password!");
   }else{
     alert("No Numbers for you!!")
   }
@@ -92,15 +92,12 @@ function passwordGen() {
     var randomNumber = Math.floor(Math.random() * chars.length);
     password += chars.substring(randomNumber, randomNumber +1);
    }
-         document.getElementById("password").value = password;
-
-         
-  
+         document.getElementById("password").value = password; 
 }
 
 
-function copyPassword() {
-  var copyText = document.getElementById("password");
-  copyText.select();
+function copyPswrd() {
+  var pswrdCopy = document.getElementById("password");
+  pswrdCopy.select();
   document.execCommand("copy");  
 }
