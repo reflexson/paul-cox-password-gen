@@ -1,8 +1,18 @@
 
+//Listen for clicks on both buttons
+
+var genButton = document.querySelector("#generate");
+genButton.addEventListener("click", passwordGen);
+
+var copyButton = document.querySelector("#copyPB");
+copyButton.addEventListener("click", copyPswrd)
+
+//Generate password function
 
 function passwordGen() {
   
-  
+//Prompts to determine character preferences
+
   let passwordLength = prompt("How many characters would you like in your password? Enter a value between 8-128", 8);
   while(passwordLength > 128 || passwordLength < 8 || Number.isNaN(Number(passwordLength))){
     alert('Please enter a value between 8-128');
@@ -49,52 +59,53 @@ function passwordGen() {
     alert('Please type \"y\" or \"n\"');
     specialC = prompt("Would you like special characters in you password? \"y\" for Yes \"n\" for No", "y").toLowerCase();
   } 
-  if(specialC == "y"){
+  if (specialC == "y"){
     alert("Whoooo You fancy!");
   }else{
     alert("Guess you're not special");
   }
 
-  if (numbers === "y" && upperCase === "y" && lowerCase === "y" && specialC === "y"){
-    var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  //Define characters based on preferences
+
+   chars = ""
+
+  if (numbers === "y"){
+    chars = chars + "0123456789";
   }
-  else if (numbers === "y" && upperCase === "y" && lowerCase === "y" && specialC === "n"){
-    var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  if (specialC === "y"){
+    chars = chars + "!@#$%^&*()";
   }
-  else if (numbers === "y" && upperCase === "y" && lowerCase === "n" && specialC === "n"){
-    var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  if (upperCase === "y"){
+    chars = chars + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
-  else if (numbers === "n" && upperCase === "n" && lowerCase === "n" && specialC === "y"){
-    var chars = "!@#$%^&*()";
-  }
-  else if (numbers === "y" && upperCase === "n" && lowerCase === "n" && specialC === "n"){
-    var chars = "0123456789";
-  }
-  else if (numbers === "n" && upperCase === "y" && lowerCase === "y" && specialC === "y"){
-    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  }
-  else if (numbers === "n" && upperCase === "n" && lowerCase === "y" && specialC === "y"){
-    var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()";
-  }
-  else if (numbers === "n" && upperCase === "n" && lowerCase === "y" && specialC === "n"){
-    var chars = "abcdefghijklmnopqrstuvwxyz";
-  }
-  else if (numbers === "y" && upperCase === "n" && lowerCase === "y" && specialC === "n"){
-    var chars = "0123456789abcdefghijklmnopqrstuvwxyz";
-  }
-  else if (numbers === "n" && upperCase === "n" && lowerCase === "n" && specialC === "n"){
-    alert("This would make a terrible password.  Try again.");
-    var chars = null;
+
+  if (lowerCase === "y"){
+    chars = chars + "abcdefghijklmnopqrstuvwxyz";
   }
   
-  var password = ""
+  // Convert current state of chars to an array
+
+  chars = chars.split("")
+
+  // Generate random password with character set defined by preference prompts
+
+  var password = []
   for (var i = 0; i < passwordLength; i++) {
-    var randomNumber = Math.floor(Math.random() * chars.length);
-    password += chars.substring(randomNumber, randomNumber +1);
+    var randomNumber = Math.floor(Math.random() * chars.length); //1 -128
+    var truevalue = chars[randomNumber] // a, b, 3, *
+    password.push(truevalue)
    }
-         document.getElementById("password").value = password; 
+
+   //Write password to "password" area and convert array back to string 
+
+
+  document.getElementById("password").value = password.join(""); 
+
 }
 
+//Copy Password Function
 
 function copyPswrd() {
   var pswrdCopy = document.getElementById("password");
