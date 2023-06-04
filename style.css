@@ -88,6 +88,8 @@ header {
   cursor: pointer;
 }
 
+/* Add Copy Button Style */
+
 .btn2 {
     background-color: hsl(242, 92%, 39%);
   border-radius: 25px;
@@ -135,8 +137,16 @@ button[disabled] {
   overflow: hidden;
 }
 
+/* Add responsive properties to Copy Password button */
+
 @media (max-width: 690px) {
   .btn {
+    font-size: 1rem;
+    margin: 16px 0px 0px 0px;
+    padding: 10px 15px;
+  }
+
+  .btn2 {
     font-size: 1rem;
     margin: 16px 0px 0px 0px;
     padding: 10px 15px;
@@ -149,6 +159,9 @@ button[disabled] {
 
 @media (max-width: 500px) {
   .btn {
+    font-size: 0.8rem;
+  } 
+  .btn2 {
     font-size: 0.8rem;
   }
 }
