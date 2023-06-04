@@ -5,7 +5,7 @@ var genButton = document.querySelector("#generate");
 genButton.addEventListener("click", passwordGen);
 
 var copyButton = document.querySelector("#copyPB");
-copyButton.addEventListener("click", copyPswrd)
+copyButton.addEventListener("click", copyPswrd);
 
 //Generate password function
 
